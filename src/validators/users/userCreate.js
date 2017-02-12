@@ -1,7 +1,7 @@
 import yup from 'yup';
 import { transformYupValidationErrors } from '../../helpers/index';
 
-const schema = yup.object().shape({
+export const schema = yup.object().shape({
   username: yup.string().required(),
   password: yup.string().required(),
   email: yup.string().required(),

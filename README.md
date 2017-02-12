@@ -1,5 +1,8 @@
 # Validators
 
+##must know
+- execute `npm run build` before pushing commit
+
 ##comes with
 - babel (es6 + plugins)
 - eslint (airbnb js config)

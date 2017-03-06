@@ -2,11 +2,11 @@ import yup from 'yup';
 import { transformYupValidationErrors } from '../../helpers/index';
 
 export const schema = yup.object().shape({
-  username: yup.string().required(),
-  password: yup.string().required(),
-  email: yup.string().required(),
   name: yup.string().required(),
-  description: yup.string().required(),
+  company: yup.string().required(),
+  email: yup.string().required(),
+  phone: yup.string().required(),
+  address: yup.string().required(),
 }).required();
 
 export const asyncValidate = values => schema.validate(values, {

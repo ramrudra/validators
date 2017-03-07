@@ -7,8 +7,8 @@ export const schema = yup.object().shape({
   name: yup.string().required(),
   company: yup.string().required(),
   email: yup.string().required(),
-  phone: yup.string().required(),
-  address: yup.string().required(),
+  phone: yup.string(),
+  address: yup.string(),
 }).required();
 
 export const asyncValidate = values => schema.validate(values, {

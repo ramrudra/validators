@@ -6,8 +6,8 @@ export const schema = yup.object().shape({
   description: yup.string().required(),
   // image: yup.string().required(),
   groupId: yup.string().required(),
-  startDate: yup.string(),
-  endDate: yup.string(),
+  startDate: yup.string().nullable(true),
+  endDate: yup.string().nullable(true),
   locationId: yup.string().required(),
   pollDataType: yup.string().required(),
 }).required();

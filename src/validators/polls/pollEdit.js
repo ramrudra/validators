@@ -4,7 +4,7 @@ import { transformYupValidationErrors } from '../../helpers/index';
 export const schema = yup.object().shape({
   title: yup.string().required(),
   description: yup.string().required(),
-  // image: yup.string().required(),
+  image: yup.string().nullable(true),
   groupId: yup.string().required(),
   startDate: yup.string().nullable(true),
   endDate: yup.string().nullable(true),

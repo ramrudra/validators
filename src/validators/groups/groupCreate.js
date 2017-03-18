@@ -4,7 +4,7 @@ import { transformYupValidationErrors } from '../../helpers/index';
 export const schema = yup.object().shape({
   title: yup.string().required(),
   description: yup.string().required(),
-  isPrivate: yup.string().required(),
+  isPrivate: yup.string().nullable(true),
 }).required();
 
 export const asyncValidate = values => schema.validate(values, {

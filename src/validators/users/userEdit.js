@@ -3,7 +3,7 @@ import { transformYupValidationErrors } from '../../helpers/index';
 
 export const schema = yup.object().shape({
   name: yup.string().required(),
-  company: yup.string().required(),
+  company: yup.string().nullable(true),
   email: yup.string().required(),
   phone: yup.string().nullable(true),
   address: yup.string().nullable(true),

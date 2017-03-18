@@ -5,7 +5,7 @@ export const schema = yup.object().shape({
   username: yup.string().required(),
   password: yup.string().required(),
   name: yup.string().required(),
-  company: yup.string().required(),
+  company: yup.string().nullable(true),
   email: yup.string().required(),
   phone: yup.string().nullable(true),
   address: yup.string().nullable(true),

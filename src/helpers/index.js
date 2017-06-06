@@ -1,4 +1,4 @@
-export const transformYupValidationErrors = res => {
+export const transformYupValidationErrors = (res) => {
   if (res === null || typeof res !== 'object') {
     return {};
   }

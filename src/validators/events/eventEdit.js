@@ -1,17 +1,12 @@
 import yup from 'yup';
 import { transformYupValidationErrors } from '../../helpers/index';
+import { createSchema } from './eventCreate';
 
-export const schema = yup.object().shape({
-  title: yup.string().required(),
-  description: yup.string().required(),
-  image: yup.string().nullable(true),
-  groupId: yup.string().required(),
-  startDate: yup.string().nullable(true),
-  endDate: yup.string().nullable(true),
-  locationId: yup.string().required(),
-}).required();
+export const schema = yup.object();
 
-export const asyncValidate = values => schema.validate(values, {
+const editSchema = createSchema.concat(schema);
+
+export const asyncValidate = values => editSchema.validate(values, {
   abortEarly: false,
 })
 .then(() => true)

@@ -1,25 +1,8 @@
 import yup from 'yup';
-import _ from 'lodash';
-import moment from 'moment';
-import { transformYupValidationErrors } from '../../helpers/index';
+import { transformYupValidationErrors, validPollOption } from '../../helpers/index';
 
 export const schema = yup.object().shape({
-  text: yup.mixed().required().test('options', 'Invalid Options', function (value) { // eslint-disable-line
-    if (!_.isNull(value)) {
-      if (_.isString(value)) {
-        return true;
-      } else if (_.isArray(value)) {
-        let isDateArray = true;
-        _.each(value, (ele) => {
-          if (!moment(ele).isValid()) {
-            isDateArray = true;
-          }
-          return isDateArray;
-        });
-      }
-    }
-    return false;
-  }),
+  text: yup.mixed().required().test('options', 'Invalid Options', validPollOption),
 });
 
 export const asyncValidate = values => schema.validate(values, {

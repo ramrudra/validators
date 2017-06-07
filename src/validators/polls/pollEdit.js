@@ -1,12 +1,19 @@
 import yup from 'yup';
-import { transformYupValidationErrors } from '../../helpers/index';
-import { createSchema } from './pollCreate';
+import { transformYupValidationErrors, checkEndDate, checkEndDateGreater, checkPollType } from '../../helpers/index';
 
-export const schema = yup.object().shape({
+export const editSchema = yup.object().shape({
+  title: yup.string().nullable(true),
+  description: yup.string().nullable(true),
+  image: yup.string().nullable(true).url(),
   groupId: yup.number().integer().nullable(true),
+  startDate: yup.string().nullable(true),
+  endDate: yup.string().nullable(true)
+  .test('poll-dates', 'End Date is required', checkEndDate)
+  .test('poll-dates', 'End Date should be greated than Start Date', checkEndDateGreater),
+  locationId: yup.string().nullable(true),
+  pollDataType: yup.string().required().test('poll-type', 'Invalid Poll Type', checkPollType),
+  isPrivate: yup.boolean().default(false),
 });
-
-const editSchema = createSchema.concat(schema);
 
 export const asyncValidate = values => editSchema.validate(values, {
   abortEarly: false,

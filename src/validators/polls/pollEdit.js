@@ -2,7 +2,9 @@ import yup from 'yup';
 import { transformYupValidationErrors } from '../../helpers/index';
 import { createSchema } from './pollCreate';
 
-export const schema = yup.object();
+export const schema = yup.object().shape({
+  groupId: yup.int().nullable(true),
+});
 
 const editSchema = createSchema.concat(schema);
 

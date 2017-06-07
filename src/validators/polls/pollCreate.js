@@ -7,7 +7,7 @@ export const createSchema = yup.object().shape({
   title: yup.string().required(),
   description: yup.string().required(),
   image: yup.string().nullable(true).url(),
-  groupId: yup.string().required(),
+  groupId: yup.int().required(),
   startDate: yup.string().nullable(true),
   endDate: yup.string().nullable(true).test('poll-dates', 'End Date is required', function (value) { // eslint-disable-line
     const parent = this.parent;
